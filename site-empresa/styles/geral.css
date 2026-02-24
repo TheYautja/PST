@@ -1,0 +1,60 @@
+:root {
+    --tamanho-nav: min(44px, 8svh);
+    font-family: "Montserrat", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+}
+
+main {
+    margin-top: var(--tamanho-nav);
+}
+
+nav {
+    position: sticky;
+
+    height: var(--tamanho-nav);
+    /* width: 100vw; */
+    margin: 0;
+    top: 0;
+    left: 0;
+
+    padding: 0.8% 0;
+
+    display: flex;
+
+    & img {
+        height: var(--tamanho-nav);
+        width: var(--tamanho-nav);
+    }
+
+    & div {
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 10%;
+    }
+
+    & a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    &::before {
+        content: '';
+        background-color: #efefef;
+        opacity: 70%;
+        width: 100%;
+        padding: 0.8% 0;
+        height: var(--tamanho-nav);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        filter: blur(10px);
+    }
+}
