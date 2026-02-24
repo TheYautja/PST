@@ -1,0 +1,183 @@
+/* Reset básico */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Corpo */
+body {
+    background-color: #d60000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header */
+header {
+    background-color: #e8b5b5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Título principal */
+main h1 {
+    text-align: center;
+    color: #ffcc66;
+    font-size: 70px;
+    margin: 40px 0;
+    letter-spacing: 4px;
+    font-weight: 400;
+    font-family: 'Monoton', regular;
+}
+
+/* Seção principal */
+main section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Botões seta */
+section > button {
+    width: 70px;
+    height: 90px;
+    background-color: #e5e5e5;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(20% 0%, 100% 50%, 20% 100%);
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* Remove o texto interno */
+section > button {
+    font-size: 0;
+}
+
+/* Botão da esquerda */
+section > button:first-of-type {
+    transform: rotate(180deg);
+}
+
+/* Efeito hover */
+section > button:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Mantém rotação correta no hover do botão esquerdo */
+section > button:first-of-type:hover {
+    transform: rotate(180deg) scale(1.05);
+}
+/* Card principal */
+article {
+    background-color: #f2f2f2;
+    width: 500px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+article img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+article h2 {
+    margin-bottom: 15px;
+}
+
+article p {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 14px;
+}
+
+article button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #d60000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Card lateral */
+aside {
+    background-color: #f7d77d;
+    width: 220px;
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+aside img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+aside h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+aside p {
+    font-size: 12px;
+}
+
+/* Footer */
+footer {
+    background-color: #e8b5b5;
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+footer div {
+    max-width: 250px;
+}
+
+footer h4 {
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 5px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
