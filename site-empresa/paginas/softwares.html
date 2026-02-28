@@ -5,28 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/softwares.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div>
-            <img src="logo.png" alt="Logo PST">
+    <header class="header">
+
+        <div class="header-left">
+            <a href="index.html" class="logo">
+                <img src="../imagens/Logo.png" alt="PST - Página inicial">
+            </a>
         </div>
 
-        <nav>
-            <ul>
-                <li><a href="#">Portfólio</a></li>
-                <li><a href="#">Modelo de negócios</a></li>
-                <li><a href="#">Equipe</a></li>
-                <li><a href="#">Suporte</a></li>
-            </ul>
-        </nav>
-
-        <div>
-            <a href="#"></a>
-            <a href="#"></a>
+        <div class="header-center">
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#modelo">Modelo de negócios</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#suporte">Suporte</a></li>
+                </ul>
+            </nav>
         </div>
+
+        <div class="header-right">
+            <div class="language-selector">
+                
+                <button class="lang-button" aria-label="Selecionar idioma">
+                    <img src="../imagens/traduzir.png" alt="Idioma">
+                </button>
+
+                <ul class="lang-menu">
+                    <li><a href="?lang=pt">Português</a></li>
+                    <li><a href="?lang=en">English</a></li>
+                    <li><a href="?lang=es">Español</a></li>
+                </ul>
+
+            </div>
+        </div>
+
     </header>
 
 
@@ -36,8 +55,9 @@
 <!-- argamassa> -->
         <section>
 
-
-            <button>&lt;</button>
+            <button class="seta-carrousel seta-esquerda" aria-label="Anterior">
+                <img src="../imagens/seta-esquerda.png" alt="">
+            </button>
 
             <article>
                 <img src="projeto1.png" alt="Plataforma de Demandas Populares">
@@ -72,49 +92,62 @@
                 </p>
             </aside>
 
-            <button>&lt;</button>
+            <button class="seta-carrousel seta-direita" aria-label="Próximo">
+                <img src="../imagens/seta-esquerda.png" alt="">
+            </button>
 
         </section>
 
     </main>
 
-    <footer>
+<footer class="footer">
 
-        <div>
-            <img src="logo.png" alt="Logo PST">
-            <p>TECNOLOGIA SERVINDO À POPULAÇÃO</p>
+    <!-- Bloco Esquerdo -->
+    <div class="footer-left">
+        <img src="../imagens/LogoSimples.png" alt="Logo PST" class="footer-logo">
+        
+        <hr class="footer-divider">
+
+        <div class="footer-social">
+            <a href="#" class="social"><img src="../imagens/linkedin-logo.png" alt="LinkedIn"></a>
+            <a href="#" class="social"><img src="../imagens/whatsapp-logo.png" alt="WhatsApp"></a>
         </div>
+    </div>
 
-        <div>
-            <h4>Suporte</h4>
-            <ul>
-                <li><a href="#">Termos de uso</a></li>
-                <li><a href="#">Política de privacidade</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="#">Equipe</a></li>
-            </ul>
-        </div>
+    <!-- Slogan -->
+    <div class="footer-slogan">
+        <p>TECNOLOGIA SERVINDO À POPULAÇÃO</p>
+    </div>
 
-        <div>
-            <h4>Endereço</h4>
-            <p>
-                Caperna Inc.<br>
-                Edifício FL Corporate<br>
-                Av. Brigadeiro Faria Lima 4300, 8º Andar<br>
-                Itaim Bibi, 04538-132<br>
-                São Paulo
-            </p>
-        </div>
+    <!-- Suporte -->
+    <div class="footer-support">
+        <h4>Suporte</h4>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Equipe</a></li>
+        </ul>
+    </div>
 
-        <div>
-            <img src="instituto_federal.png" alt="Instituto Federal">
-        </div>
+    <!-- Endereço -->
+    <div class="footer-address">
+        <h4>Endereço</h4>
+        <p>
+            Caperna Inc.<br>
+            Edifício FL Corporate<br>
+            Av. Brigadeiro Faria Lima 4300, 8º Andar<br>
+            Itaim Bibi, 04538-132<br>
+            São Paulo
+        </p>
+    </div>
 
-        <div>
-            <a href="#">LinkedIn</a>
-            <a href="#">WhatsApp</a>
-        </div>
+    <!-- Logo Direita -->
+    <div class="footer-right">
+        <img src="../imagens/ifc-logo.png" alt="Instituto Federal" class="footer-partner">
+    </div>
 
-    </footer>
+</footer>
+    <script src="../scripts/header.js"></script>
 </body>
 </html>
