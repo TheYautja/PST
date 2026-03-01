@@ -5,11 +5,11 @@ footer {
     justify-content: space-around;
     padding: 40px 20px;
     flex-wrap: wrap;
-     background: linear-gradient(
+     /* background: linear-gradient(
         to left,
         rgba(255,255,255,1) 30%,
         rgba(255,255,255,0.6) 70%
-    );
+    ); */
 }
 
 footer div {

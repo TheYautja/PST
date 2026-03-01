@@ -3,50 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PST</title>
     <link rel="stylesheet" href="../styles/softwares.css">
-    <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/geral.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="../imagens/Logo.png" type="image/x-icon">
+
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/softwares.js" defer></script>
 </head>
 <body>
-    <header class="header">
+    <nav>
+    	<img src="../imagens/Logo.png" alt="Logo da empresa"  >
+		<div>
+			<a href="">Principal</a>
+                        <a href="">Portifólio</a>
+			<a href="">Equipe</a>  <!-- lista pros links do header -->
+			<a href="">Suporte</a>
+		</div>
+        <div class="language-selector">
+            
+            <button class="lang-button" aria-label="Selecionar idioma">
+                <img src="../imagens/traduzir.png" alt="Idioma">
+            </button>
 
-        <div class="header-left">
-            <a href="index.html" class="logo">
-                <img src="../imagens/Logo.png" alt="PST - Página inicial">
-            </a>
+            <ul class="lang-menu">
+                <li><a href="?lang=pt">Português</a></li>
+                <li><a href="?lang=en">English</a></li>
+                <li><a href="?lang=es">Español</a></li>
+            </ul>
+
         </div>
-
-        <div class="header-center">
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#modelo">Modelo de negócios</a></li>
-                    <li><a href="#equipe">Equipe</a></li>
-                    <li><a href="#suporte">Suporte</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="header-right">
-            <div class="language-selector">
-                
-                <button class="lang-button" aria-label="Selecionar idioma">
-                    <img src="../imagens/traduzir.png" alt="Idioma">
-                </button>
-
-                <ul class="lang-menu">
-                    <li><a href="?lang=pt">Português</a></li>
-                    <li><a href="?lang=en">English</a></li>
-                    <li><a href="?lang=es">Español</a></li>
-                </ul>
-
-            </div>
-        </div>
-
-    </header>
+	</nav>
 
 
     <main>
@@ -148,6 +139,6 @@
     </div>
 
 </footer>
-    <script src="../scripts/header.js"></script>
+    
 </body>
 </html>

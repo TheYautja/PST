@@ -6,6 +6,7 @@
         <title>PST</title>
         <link rel="stylesheet" href="/site-empresa/styles/style.css">
         <link rel="stylesheet" href="site-empresa/styles/geral.css">
+		<link rel="stylesheet" href="site-empresa/styles/footer.css">
         <script src="site-empresa/scripts/script.js" defer></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,15 +16,27 @@
         <link rel="shortcut icon" href="site-empresa/imagens/Logo.png" type="image/x-icon">
 </head>
 <body>
-	<nav>
-                <img src="site-empresa/imagens/Logo.png" alt="Logo da empresa"  >
+    <nav>
+    	<img src="../imagens/Logo.png" alt="Logo da empresa"  >
 		<div>
 			<a href="">Principal</a>
                         <a href="">Portifólio</a>
 			<a href="">Equipe</a>  <!-- lista pros links do header -->
 			<a href="">Suporte</a>
 		</div>
-                <img src="site-empresa/imagens/traduzir.png" alt="Logo da empresa"  >
+        <div class="language-selector">
+            
+            <button class="lang-button" aria-label="Selecionar idioma">
+                <img src="../imagens/traduzir.png" alt="Idioma">
+            </button>
+
+            <ul class="lang-menu">
+                <li><a href="?lang=pt">Português</a></li>
+                <li><a href="?lang=en">English</a></li>
+                <li><a href="?lang=es">Español</a></li>
+            </ul>
+
+        </div>
 	</nav>
 
         <main>
@@ -78,26 +91,54 @@
 	</section>
         </main>
 
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
+<footer class="footer">
+
+    <!-- Bloco Esquerdo -->
+    <div class="footer-left">
+        <img src="site-empresa/imagens/LogoSimples.png" alt="Logo PST" class="footer-logo">
+        
+        <hr class="footer-divider">
+
+        <div class="footer-social">
+            <a href="#" class="social"><img src="site-empresa/imagens/linkedin-logo.png" alt="LinkedIn"></a>
+            <a href="#" class="social"><img src="site-empresa/imagens/whatsapp-logo.png" alt="WhatsApp"></a>
+        </div>
+    </div>
+
+    <!-- Slogan -->
+    <div class="footer-slogan">
+        <p>TECNOLOGIA SERVINDO À POPULAÇÃO</p>
+    </div>
+
+    <!-- Suporte -->
+    <div class="footer-support">
+        <h4>Suporte</h4>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Equipe</a></li>
+        </ul>
+    </div>
+
+    <!-- Endereço -->
+    <div class="footer-address">
+        <h4>Endereço</h4>
+        <p>
+            Caperna Inc.<br>
+            Edifício FL Corporate<br>
+            Av. Brigadeiro Faria Lima 4300, 8º Andar<br>
+            Itaim Bibi, 04538-132<br>
+            São Paulo
+        </p>
+    </div>
+
+    <!-- Logo Direita -->
+    <div class="footer-right">
+        <img src="site-empresa/imagens/ifc-logo.png" alt="Instituto Federal" class="footer-partner">
+    </div>
+
+</footer>
 	
 </body>
 </html>
