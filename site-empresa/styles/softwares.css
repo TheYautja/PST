@@ -1,38 +1,12 @@
 /* Reset básico */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+
 
 /* Corpo */
 body {
     background-color: #d60000;
     font-family: 'Montserrat', sans-serif;
-}
-
-/* Header */
-header {
-    background-color: #e8b5b5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 40px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 500;
 }
 
 /* Título principal */
@@ -56,36 +30,39 @@ main section {
 }
 
 /* Botões seta */
-section > button {
+.seta-carrousel {
     width: 70px;
     height: 90px;
-    background-color: #e5e5e5;
     border: none;
+    background: none;
+    padding: 0;
     cursor: pointer;
-    clip-path: polygon(20% 0%, 100% 50%, 20% 100%);
-    border-radius: 20px;
-    transition: 0.3s;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Remove o texto interno */
-section > button {
-    font-size: 0;
+.seta-carrousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Botão da esquerda */
-section > button:first-of-type {
+.seta-direita {
     transform: rotate(180deg);
 }
 
-/* Efeito hover */
-section > button:hover {
-    background-color: #ffffff;
-    transform: scale(1.05);
+.seta-direita:hover {
+    transform: rotate(180deg) scale(1.05);
 }
 
+/* Efeito hover */
+
 /* Mantém rotação correta no hover do botão esquerdo */
-section > button:first-of-type:hover {
-    transform: rotate(180deg) scale(1.05);
+.seta-esquerda:hover {
+    transform: scale(1.05);
 }
 /* Card principal */
 article {
@@ -144,40 +121,5 @@ aside h3 {
 
 aside p {
     font-size: 12px;
-}
-
-/* Footer */
-footer {
-    background-color: #e8b5b5;
-    display: flex;
-    justify-content: space-around;
-    padding: 40px 20px;
-    flex-wrap: wrap;
-}
-
-footer div {
-    max-width: 250px;
-}
-
-footer h4 {
-    margin-bottom: 10px;
-}
-
-footer ul {
-    list-style: none;
-}
-
-footer ul li {
-    margin-bottom: 5px;
-}
-
-footer ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-}
-
-footer p {
-    font-size: 14px;
 }
 

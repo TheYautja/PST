@@ -6,6 +6,7 @@
         <title>PST</title>
         <link rel="stylesheet" href="site-empresa/styles/landing.css">
         <link rel="stylesheet" href="site-empresa/styles/geral.css">
+		<link rel="stylesheet" href="site-empresa/styles/footer.css">
         <script src="site-empresa/scripts/script.js" defer></script>
         <script src = "site-empresa/scripts/index.js" defer></script>
 
@@ -13,26 +14,43 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-        <link rel="shortcut icon" href="site-empresa/imagens/Logo.png" type="image/x-icon">
+		<link rel="shortcut icon" href="../imagens/Logo.png" type="image/x-icon">
+		<script src="./site-empresa/scripts/header.js" defer></script>
+			
 </head>
 <body>
-	<main>
-		
-		
-	<section>
-		<nav>
-			<img src="site-empresa/imagens/Logo.png" alt="Logo da empresa"  >
-				<div>
-					<a href="">Principal</a>
-					<a href="">Portifólio</a>
-					<a href="">Equipe</a>  
-					<a href="">Suporte</a>
-				</div>
-			<img src="site-empresa/imagens/traduzir.png" alt="Logo da empresa"  >
-		</nav>
-		<div id = "imgContainer">
-			<img id = "logo" src = "site-empresa/imagens/logoIntro.png" alt = "lIntro">
-			<img id = "telas" src = "site-empresa/imagens/telasComLegenda.png" alt = "lTelas">
+    <nav>
+    	<img src="./site-empresa/imagens/Logo.png" alt="Logo da empresa"  >
+		<div>
+			<a href="./index.html">Principal</a>
+			<a href="./site-empresa/paginas/softwares.html">Portifólio</a>
+			<a href="./site-empresa/paginas/equipe.html">Equipe</a>  <!-- lista pros links do header -->
+			<a href="./site-empresa/paginas/suporte.html">Suporte</a>
+		</div>
+        <div class="language-selector">
+            
+            <button class="lang-button" aria-label="Selecionar idioma">
+                <img src="./site-empresa/imagens/traduzir.png" alt="Idioma">
+            </button>
+
+            <ul class="lang-menu">
+                <li><a href="?lang=pt">Português</a></li>
+                <li><a href="?lang=en">English</a></li>
+                <li><a href="?lang=es">Español</a></li>
+            </ul>
+
+        </div>
+	</nav>
+
+        <main>
+	
+	<section>  <!-- hero section -->
+		<div>  <!-- div pra hero image -->
+			<h2></h2>   <!-- texto intro -->
+			<button></button> <!-- btao comecar -->
+			<div>
+				<img>  <!-- logo -->
+			</div>
 		</div>
 	</section>
 	
@@ -91,45 +109,54 @@
         <li><span class = "nlista">4.</span> <u>Acompanhamento</u> contínuo</li>
       </ul>
 
-      <img
-        class="ilustracao"
-        src="site-empresa/imagens/67.png"
-        alt="Ilustração atendimento digital"
-      />
+<footer class="footer">
+
+    <!-- Bloco Esquerdo -->
+    <div class="footer-left">
+        <img src="site-empresa/imagens/LogoSimples.png" alt="Logo PST" class="footer-logo">
+        
+        <hr class="footer-divider">
+
+        <div class="footer-social">
+            <a href="#" class="social"><img src="site-empresa/imagens/linkedin-logo.png" alt="LinkedIn"></a>
+            <a href="#" class="social"><img src="site-empresa/imagens/whatsapp-logo.png" alt="WhatsApp"></a>
+        </div>
     </div>
 
-    <div class="right">
-
-      <div class="review-card">
-        <div class="user">Usuário 1</div>
-        <p>
-          “Após implementar o sistema do PST, reduzimos em 40% o tempo de
-          atendimento ao cidadão.”
-        </p>
-        <span>— Secretaria de Administração Municipal</span>
-      </div>
-
-      <div class="review-card">
-        <div class="user">Usuário 2</div>
-        <p>
-          “Após implementar o sistema do PST, reduzimos em 40% o tempo de
-          atendimento ao cidadão.”
-        </p>
-        <span>— Secretaria de Administração Municipal</span>
-      </div>
-
-      <div class="review-card">
-        <div class="user">Usuário 3</div>
-        <p>
-          “Após implementar o sistema do PST, reduzimos em 40% o tempo de
-          atendimento ao cidadão.”
-        </p>
-        <span>— Secretaria de Administração Municipal</span>
-      </div>
-
+    <!-- Slogan -->
+    <div class="footer-slogan">
+        <p>TECNOLOGIA SERVINDO À POPULAÇÃO</p>
     </div>
-  </div>
-</section>
+
+    <!-- Suporte -->
+    <div class="footer-support">
+        <h4>Suporte</h4>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Equipe</a></li>
+        </ul>
+    </div>
+
+    <!-- Endereço -->
+    <div class="footer-address">
+        <h4>Endereço</h4>
+        <p>
+            Caperna Inc.<br>
+            Edifício FL Corporate<br>
+            Av. Brigadeiro Faria Lima 4300, 8º Andar<br>
+            Itaim Bibi, 04538-132<br>
+            São Paulo
+        </p>
+    </div>
+
+    <!-- Logo Direita -->
+    <div class="footer-right">
+        <img src="site-empresa/imagens/ifc-logo.png" alt="Instituto Federal" class="footer-partner">
+    </div>
+
+</footer>
 	
 	<section> 
 		<div id = "problema">
