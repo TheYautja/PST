@@ -1,3 +1,30 @@
+@font-face {
+  font-family: "Listras";
+  src: url("fontes/Monoton/Monoton-Regular.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: "MontserratCustom";
+  src: url("fontes/Montserrat/static/Montserrat-Thin.ttf") format("truetype");
+}
+
+
+.monotonV {
+  font-family: "Listras", cursive;
+  color: #a60008;
+}
+
+
+.monotonA {
+  font-family: "Listras", cursive;
+  color: #e4ff4a;
+}
+
+
+h2, h3, h4, h5 {
+  font-family: "MontserratCustom", sans-serif;
+}
 
 
 section {
@@ -95,7 +122,6 @@ section:nth-of-type(6){
 
 #projetos {
 	min-width: 80vw;
-	background-color: black;
 }
 
 
@@ -145,6 +171,11 @@ section:nth-of-type(6){
 }
 
 
+.topicos li {
+	font-family: "MonsterratCustom";
+}
+
+
 .left {
 	font-size: 30px;
 }
@@ -181,21 +212,39 @@ section:nth-of-type(6){
 }
 
 
+#problema h1 {
+	font-size: 60px;
+	margin-bottom: 0;
+}
 
 
+#problema h5 {
+	font-size: 60px;
+}
+		
+		
+#problema img {
+	margin-top: 10%
+	width: 60%;
+	height: auto;
+	margin-left: 15%;
+	margin-bottom: 10%;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+#problema button {
+	background-color: red;
+	width: 30%;
+	height: 10vh;
+	border-radius: 5%;
+	border: none;
+}
+		
+	
+	
+	
+	
+	
 
 
 
