@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PST</title>
-        <link rel="stylesheet" href="/site-empresa/styles/style.css">
+        <link rel="stylesheet" href="site-empresa/styles/landing.css">
         <link rel="stylesheet" href="site-empresa/styles/geral.css">
         <script src="site-empresa/scripts/script.js" defer></script>
+        <script src = "site-empresa/scripts/index.js" defer></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,89 +16,136 @@
         <link rel="shortcut icon" href="site-empresa/imagens/Logo.png" type="image/x-icon">
 </head>
 <body>
-	<nav>
-                <img src="site-empresa/imagens/Logo.png" alt="Logo da empresa"  >
-		<div>
-			<a href="">Principal</a>
-                        <a href="">Portifólio</a>
-			<a href="">Equipe</a>  <!-- lista pros links do header -->
-			<a href="">Suporte</a>
-		</div>
-                <img src="site-empresa/imagens/traduzir.png" alt="Logo da empresa"  >
-	</nav>
-
-        <main>
-	
-	<section>  <!-- hero section -->
-		<div>  <!-- div pra hero image -->
-			<h2></h2>   <!-- texto intro -->
-			<button></button> <!-- btao comecar -->
-			<div>
-				<img>  <!-- logo -->
-			</div>
-		</div>
-	</section>
-	
-	<section>  <!-- projetos -->
-		<div>
-			<div> <!-- coluna esquerda -->
-				<h2></h2>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-			<div>  <!-- coluna direita -->
-				<h3></h3>
-				<button></button>
-				<button></button>
+	<main>
+		
+		
+	<section>
+		<nav>
+			<img src="site-empresa/imagens/Logo.png" alt="Logo da empresa"  >
 				<div>
-					<img>
+					<a href="">Principal</a>
+					<a href="">Portifólio</a>
+					<a href="">Equipe</a>  
+					<a href="">Suporte</a>
 				</div>
+			<img src="site-empresa/imagens/traduzir.png" alt="Logo da empresa"  >
+		</nav>
+		<div id = "imgContainer">
+			<img id = "logo" src = "site-empresa/imagens/logoIntro.png" alt = "lIntro">
+			<img id = "telas" src = "site-empresa/imagens/telasComLegenda.png" alt = "lTelas">
+		</div>
+	</section>
+	
+	
+	<section> 
+		<div id = "introContainer">
+			<div id = "introPST">
+				<h1>NOSSA EMPRESA</h1>
+				<h3>
+					No PST – Partido dos Softwares Trabalhadores,
+					acreditamos que tecnologia deve servir às
+					pessoas.
+				</h3>
+				<h3>
+					Desenvolvemos soluções web inteligentes
+					para prefeituras e para o trabalhador,
+					transformando as necessidades da população em
+					sistemas eficientes, acessíveis e centrados no
+					cidadão.
+				</h3>
 			</div>
+			<img id = "introIMG" src = "site-empresa/imagens/sitesSoftware.png">
 		</div>
 	</section>
 
-	<section> <!-- parte preta estranha n sei oq faz -->
-		<div>
-			<img>
-			<h1></h1>  <!-- titulo -->
-			<h6></h6>  <!-- subtitulo -->
-			<div>  <!-- coluna esquerda -->
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+	<section> 
+		<div id = "projContainer">
+			<h1>Nosso portifólio</h1>
+			<h4>
+				O principal objetivo do PST é facilitar a vida do
+				trabalhador por meio da tecnologia.
+			</h4>
+			<h4><strong>Confira alguns dos nossos trabalhos</strong></h4>
+			<div id = "projetos">
+				<ul class = "carrossel">
+					<li class = "card"><div class = "conteudo">teste 1</div></li>
+					<li class = "card"><div class = "conteudo">2</div></li>
+					<li class = "card"><div class = "conteudo">3</div></li>
+					<li class = "card"><div class = "conteudo">4</div></li>
+					<li class = "card"><div class = "conteudo">5</div></li>
 				</ul>
 			</div>
-			<div>
-				<img>  <!-- imagem a direita -->
-			</div>
 		</div>
 	</section>
-        </main>
-
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
-        <p>a</p>
 	
+<section id="como-trabalhamos">
+  <div class="info-container">
+
+    <div class="left">
+      <h1 class="titulo">COMO TRABALHAMOS:</h1>
+
+      <ul class="topicos">
+        <li><span>1.</span> Levantamento das <u>demandas</u> <u>populares</u></li>
+        <li><span>2.</span> Desenvolvimento da solução</li>
+        <li><span>3.</span> Implementação e treinamento</li>
+        <li><span>4.</span> <u>Acompanhamento</u> contínuo</li>
+      </ul>
+
+      <img
+        class="ilustracao"
+        src="site-empresa/imagens/67.png"
+        alt="Ilustração atendimento digital"
+      />
+    </div>
+
+    <div class="right">
+
+      <div class="review-card">
+        <div class="user">Usuário 1</div>
+        <p>
+          “Após implementar o sistema do PST, reduzimos em 40% o tempo de
+          atendimento ao cidadão.”
+        </p>
+        <span>— Secretaria de Administração Municipal</span>
+      </div>
+
+      <div class="review-card">
+        <div class="user">Usuário 2</div>
+        <p>
+          “Após implementar o sistema do PST, reduzimos em 40% o tempo de
+          atendimento ao cidadão.”
+        </p>
+        <span>— Secretaria de Administração Municipal</span>
+      </div>
+
+      <div class="review-card">
+        <div class="user">Usuário 3</div>
+        <p>
+          “Após implementar o sistema do PST, reduzimos em 40% o tempo de
+          atendimento ao cidadão.”
+        </p>
+        <span>— Secretaria de Administração Municipal</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+	
+	<section> 
+		<div id = "problema">
+			<h1>TRANSFORME AINDA HOJE A VIDA DA SUA CIDADE</h1>
+			<h5>com a ajuda do</h5>
+			<img src = "site-empresa/imagens/logoIntro.png">
+			<button>nos conte seu problema por aqui</button>
+		</div>
+	</section>
+	
+	<section> 
+
+	</section>
+
+	</main>
 </body>
+
+
 </html>
