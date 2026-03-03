@@ -21,7 +21,6 @@
     color: #e4ff4a;
 }
 
-
 h2, h3, h5 {
     font-family: "MontserratCustom", sans-serif;
 }
@@ -319,7 +318,6 @@ section:nth-of-type(6){
 	background-color: #a60008;
 	margin-bottom: 6vh;
 	color: white;
-	font-family: MonsterratCustom;
 	font-size: 20px;
 	width: 20%;
 	height: 10vh;
