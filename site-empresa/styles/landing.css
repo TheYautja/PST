@@ -34,6 +34,8 @@ section {
 	background: #ffffff;
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
+	max-width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -55,8 +57,8 @@ section:nth-of-type(2){
 section:nth-of-type(3) {
 	background: linear-gradient(180deg,
 	rgba(255, 255, 255, 1) 0%,
-	rgba(255, 80, 80, 1) 5%, 
-	rgba(255, 71, 71, 1) 95%, 
+	rgba(166, 0, 8, 1) 5%, 
+	rgba(166, 0, 8, 1) 95%, 
 	rgba(255, 255, 255, 1) 100%);
 }
 
