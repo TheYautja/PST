@@ -22,14 +22,17 @@ export default function Catalogo() {
          {
             nome: 'denovo',
             key: 2
-         }
+         }, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}   
       ]
 
       return(
-         <div>
-            {plantas.map(element => (
-               Catalogado(element)
-            ))}
+         <div className="catalogoPlantas">
+            {
+            plantas.filter(element => element.nome.includes(filtro)
+            ).map((element) => {
+               Catalogado(element);
+            })
+            }
          </div>
          
       )
@@ -51,6 +54,10 @@ export default function Catalogo() {
             <section>
                {carregarPlantas()}
             </section>
+
+            <div className="proximaPagina">
+               <p> {"< 00 | 00 >"}  </p>
+            </div>
 
          </main>
          <footer></footer>

@@ -29,8 +29,28 @@
 
 .catalogado {
    background-color: antiquewhite;
-   height: 20vw;
-   width: 20vw;
+   height: 18vw;
+   width: 18vw;
+   min-height: 80px;
+   min-width: 80px;
    border-radius: 20px;
-   margin: 1%;
+   margin: 0.5%;
+}
+
+.catalogoPlantas {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   grid-template-rows: repeat(6, 1fr);
+   grid-column-gap: 1%;
+   grid-row-gap: 1%;
+
+}
+
+.proximaPagina {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: var(--manjericao);
+   font-weight: 800;
 }
