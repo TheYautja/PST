@@ -15,14 +15,15 @@ export const getAll = async (req, res) => {
 };
 
 
-export cont getByID = async (req, res) => {
+export const getByID = async (req, res) => {
     try{
+        const { id } = req.params;
         const result = await db.query(
-            `SELECT * from plantas WHERE id = $1`
+            `SELECT * from plantas WHERE id = $1`,
             [id]
         );
 
-        if(result.rows.lenght === 0 ) {
+        if(result.rows.length === 0 ) {
             return res.status(404).json({error: "essa planta não existe"})
 
         }
@@ -34,7 +35,6 @@ export cont getByID = async (req, res) => {
     }
 
 }
-
 
 
 export const createPlantEntry = async (req, res) => {
@@ -57,6 +57,24 @@ export const createPlantEntry = async (req, res) => {
 
         res.status(201).json(result.rows[0]);
 
+
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+}
+
+
+export const deletePlant = async (req, res) => {
+    try
+    {
+        const id = req.params;
+
+        const result = await db.query(`
+            DELETE FROM plantas
+            WHERE id = $1
+        ` [id]);
+
+        res.status(200).json({message: "planta deletada"});
 
     } catch (err) {
         res.status(500).json({error: err.message});
