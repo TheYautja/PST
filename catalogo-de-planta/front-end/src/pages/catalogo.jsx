@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Catalogo() {
 
-   const [filtro, setFiltro] = useState(' ');
+   const [filtro, setFiltro] = useState('');
 
    function manusearMudancaFiltro(e) {
       setFiltro(e.target.value)
@@ -14,6 +14,7 @@ export default function Catalogo() {
 
    // * Para cada planta carregada, tem q chamar a função Catalogado
    function carregarPlantas() {
+      // ! Temporário, REMOVER
       const plantas = [
          {
             nome: 'ola',
@@ -22,16 +23,16 @@ export default function Catalogo() {
          {
             nome: 'denovo',
             key: 2
-         }, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}, {nome: 'ola', key: 3}   
+         }, {nome: 'ola', key: 3}, {nome: 'ola', key: 4}, {nome: 'ola', key: 5}   
       ]
 
       return(
          <div className="catalogoPlantas">
             {
-            plantas.filter(element => element.nome.includes(filtro)
-            ).map((element) => {
-               Catalogado(element);
-            })
+               // plantas.map(element => Catalogado(element) )
+
+               plantas.filter(element => element.nome.toLowerCase().includes(filtro.toLowerCase()))
+               .map(element => Catalogado(element) )
             }
          </div>
          
