@@ -2,11 +2,26 @@ import Header from "./widgets/Header";
 import Catalogado from "./widgets/Catalogado";
 import '../assets/styles/catalogo.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Catalogo() {
    const [filtro, setFiltro] = useState('');
+   const [plantas, setPlantas] = useState([]);
+
+   useEffect(() => {
+      async function fetchPlantas() {
+         try {
+            const response = await axios.get('http://localhost:8000/plants');
+            const semValoresNulos = response.data.filter(element => element.nome_comum != null);
+            setPlantas(semValoresNulos);
+         } catch (error) {
+            console.error('Erro:', error);
+         }
+      }
+      fetchPlantas();
+   }, []);
 
    function manusearMudancaFiltro(e) {
       setFiltro(e.target.value)
@@ -14,27 +29,13 @@ export default function Catalogo() {
 
    // * Para cada planta carregada, tem q chamar a função Catalogado
    function carregarPlantas() {
-      // ! Temporário, REMOVER
-      const plantas = [
-         {
-            nome: 'ola',
-            key: 1
-         },
-         {
-            nome: 'denovo',
-            key: 2
-         }, {nome: 'ola', key: 3}, {nome: 'ola', key: 4}, {nome: 'ola', key: 5}   
-      ]
-
       return(
          <div className="catalogoPlantas">
             {
-               // plantas.map(element => Catalogado(element) )
-               plantas.filter(element => element.nome.toLowerCase().includes(filtro.toLowerCase()))
-               .map(element => Catalogado(element) )
+               plantas.filter(element => element.nome_comum.toLowerCase().includes(filtro.toLowerCase()))
+               .map(element => Catalogado(element))
             }
          </div>
-         
       )
    }
 
