@@ -98,3 +98,40 @@ export const deletePlant = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+
+export const getFirst36 = async (req, res) => {
+  try {
+
+    const result = await db.query(
+      `SELECT * FROM plantas LIMIT 36`
+    );
+
+    res.json(result.rows);
+
+  }catch (err) {
+    res.status(500).json({error: err.message});
+  }
+}
+
+
+export const getFirstN = async (req, res) => {
+  try {
+
+    const { count } = req.body
+
+    if (!count || isNaN(count) || count <= 0) {
+      return res.status(400).json({ error: "faz favor né bicho" });
+    }
+
+    await db.query(
+      `SELECT * FROM plantas LIMIT $1`,
+      [count]
+    );
+
+    res.json(result.rows);
+
+  }catch (err) {
+    res.status(500).json({error: err.message});
+  }
+}
