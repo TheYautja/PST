@@ -1,11 +1,11 @@
 import Header from "./widgets/Header";
 import Catalogado from "./widgets/Catalogado";
 import '../assets/styles/catalogo.css';
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
 export default function Catalogo() {
-
    const [filtro, setFiltro] = useState('');
 
    function manusearMudancaFiltro(e) {
@@ -30,7 +30,6 @@ export default function Catalogo() {
          <div className="catalogoPlantas">
             {
                // plantas.map(element => Catalogado(element) )
-
                plantas.filter(element => element.nome.toLowerCase().includes(filtro.toLowerCase()))
                .map(element => Catalogado(element) )
             }
@@ -39,16 +38,16 @@ export default function Catalogo() {
       )
    }
 
-
    return (
       <div>
          <Header />
          <main>
-
             <h1>Catálogo de plantas - Cidade</h1>
 
+            <Link to={"/cadastrar-planta"} className="add.btn">+</Link>
+
             <div id="pesquisa">
-               <p>Foto</p>
+               <p>🔍</p>
                <input type="text" id="pesquisa" value={filtro} onChange={manusearMudancaFiltro} />
             </div>
 

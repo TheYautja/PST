@@ -7,6 +7,7 @@ import Maps from "./pages/maps.jsx";
 import Catalogo from "./pages/catalogo.jsx";
 import Login from './pages/login.jsx';
 import Register from './pages/Register.jsx';
+import CadastroPlanta from './pages/cadastroPlantas.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/cadastrar-planta" element={<CadastroPlanta/>} />
         </Routes>
       </Router>
   </StrictMode>,
