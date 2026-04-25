@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import '../assets/styles/forms.css'
 
 export default function CadastroPlanta() {
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
 
   const [form, setForm] = useState({
     name: "",
@@ -34,78 +40,78 @@ export default function CadastroPlanta() {
       author: "Usuário"
     };
 
-    console.log(newPlant); // depois vai pro backend
+    console.log(newPlant);
 
-    navigate("/mapa");
+    navigate("/maps");
   }
 
   return (
     <div className="form-container">
-        <div className="form-box">
-      <h1>Cadastrar Planta</h1>
+      <div className="form-box">
+        <h1>Cadastrar Planta</h1>
 
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <input
+            name="name"
+            placeholder="Nome comum"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="name"
-          placeholder="Nome comum"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+          <input
+            name="genero"
+            placeholder="Gênero"
+            value={form.genero}
+            onChange={handleChange}
+          />
 
-        <input
-          name="genero"
-          placeholder="Gênero"
-          value={form.genero}
-          onChange={handleChange}
-        />
+          <input
+            name="especie"
+            placeholder="Espécie"
+            value={form.especie}
+            onChange={handleChange}
+          />
 
-        <input
-          name="especie"
-          placeholder="Espécie"
-          value={form.especie}
-          onChange={handleChange}
-        />
+          <textarea
+            name="description"
+            placeholder="Descrição"
+            value={form.description}
+            onChange={handleChange}
+          />
 
-        <textarea
-          name="description"
-          placeholder="Descrição"
-          value={form.description}
-          onChange={handleChange}
-        />
+          <input
+            name="image"
+            placeholder="URL da imagem"
+            value={form.image}
+            onChange={handleChange}
+          />
 
-        <input
-          name="image"
-          placeholder="URL da imagem"
-          value={form.image}
-          onChange={handleChange}
-        />
+          <input
+            name="lat"
+            type="number"
+            step="any"
+            placeholder="Latitude"
+            value={form.lat}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="lat"
-          type="number"
-          placeholder="Latitude"
-          value={form.lat}
-          onChange={handleChange}
-          required
-        />
+          <input
+            name="lng"
+            type="number"
+            step="any"
+            placeholder="Longitude"
+            value={form.lng}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="lng"
-          type="number"
-          placeholder="Longitude"
-          value={form.lng}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit" className="submit-btn">
-          Salvar
-        </button>
-
-      </form>
-    </div>
+          <button type="submit" className="submit-btn">
+            Salvar
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

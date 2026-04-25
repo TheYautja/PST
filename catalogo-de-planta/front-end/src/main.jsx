@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from './context/AuthContext';
 import Maps from "./pages/maps.jsx";
 import Catalogo from "./pages/catalogo.jsx";
 import Login from './pages/login.jsx';
@@ -11,7 +12,8 @@ import CadastroPlanta from './pages/cadastroPlantas.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-         <Router>
+    <AuthProvider>
+      <Router>
         <Routes>
           <Route path="/maps" element={<Maps />} />
           <Route path="/catalogo" element={<Catalogo />} />
@@ -21,5 +23,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/cadastrar-planta" element={<CadastroPlanta/>} />
         </Routes>
       </Router>
+    </AuthProvider>
+         
   </StrictMode>,
 )

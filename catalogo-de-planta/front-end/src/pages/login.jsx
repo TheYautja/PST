@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
+  const { login } = useAuth(); 
+  const navigate = useNavigate(); 
+
   const [form, setForm] = useState({
     email: "",
     senha: ""
@@ -10,43 +14,63 @@ export default function Login() {
   async function handleLogin(e) {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/users");
-    const users = await res.json();
+    login({ name: "Usuário Teste", email: form.email }); 
+    alert("Login realizado");
+    navigate("/"); 
+    /* 
+    O que tinha antes, comentado pra não travar o front sem o backend ligado
+    
+    try {
+      const res = await fetch("http://localhost:3000/users" );
+      const users = await res.json();
 
-    const user = users.find(
-      (u) => u.email === form.email && u.senha === form.senha
-    );
+      const user = users.find(
+        (u) => u.email === form.email && u.senha === form.senha
+      );
 
-    if (user) {
-      alert("Login OK");
-    } else {
-      alert("Usuário não encontrado");
+      if (user) {
+        login(user); // Se achar o usuário real, loga com os dados dele
+        navigate("/");
+      } else {
+        alert("Usuário não encontrado");
+      }
+    } catch (error) {
+      console.error("Erro ao conectar com backend:", error);
     }
+    */
   }
 
   return (
-  <div>
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-      />
-
-      <input
-        type="password"
-        placeholder="Senha"
-        value={form.senha}
-        onChange={(e) => setForm({ ...form, senha: e.target.value })}
-      />
-
-      <button type="submit">Entrar</button>
-    </form>
     <div>
-        <p>Não tem uma conta?</p>
-        <Link to='/register'>Cadastre-se</Link>
-    </div>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="Senha"
+          value={form.senha}
+          onChange={(e) => setForm({ ...form, senha: e.target.value })}
+          required
+        />
+
+        <button type="submit">Entrar</button>
+      </form>
+      
+      <div style={{ marginTop: "20px" }}>
+          <p>Não tem uma conta?</p>
+          <Link to='/register'>Cadastre-se</Link>
+      </div>
+
+      <div style={{ marginTop: "30px", borderTop: "1px solid #ccc", paddingTop: "10px" }}>
+          <small>qualquer email/senha funciona aq pra testar as coisas</small>
+      </div>
     </div>
   );
 }

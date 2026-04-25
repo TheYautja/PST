@@ -1,8 +1,11 @@
 import Header from "./pages/widgets/Header";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
+  const { isLoggedIn } = useAuth();
+
   return (
     <div>
         <Header/>
@@ -13,6 +16,12 @@ function App() {
           <div id="botoes-inicial">
             <button><Link to='/maps'>Mapa</Link></button>
             <button><Link to='/catalogo'>Catálogo</Link></button>
+            {!isLoggedIn && (
+              <button><Link to='/login'>Cadastrar Planta</Link></button>
+              )}
+            {isLoggedIn && (
+                <button><Link to='/cadastrar-planta'>Cadastrar Planta</Link></button>
+              )}
           </div>
         </main>
         <footer></footer>
