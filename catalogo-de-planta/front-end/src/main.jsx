@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Maps from "./pages/maps.jsx";
 import Catalogo from "./pages/catalogo.jsx";
+import Login from './pages/login.jsx';
+import Register from './pages/Register.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,6 +15,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="/maps" element={<Maps />} />
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/" element={<App />} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
       </Router>
   </StrictMode>,

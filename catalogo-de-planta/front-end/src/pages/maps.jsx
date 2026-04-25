@@ -1,9 +1,27 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { Link } from "react-router-dom";
+import "../assets/styles/maps.css";
+
 
 const initialMarkers = [
-  { id: 1, name: "Marker 1", lat: -23.55, lng: -46.63 },
-  { id: 2, name: "Marker 2", lat: -23.56, lng: -46.64 },
+  {
+  id: 1,
+  name: "Marker 1",
+  lat: -23.55,
+  lng: -46.63,
+  image: "https://via.placeholder.com/300",
+  description: "Descrição exemplo",
+  author: "Usuário"
+},
+  { id: 2, 
+    name: "Marker 2", 
+    lat: -23.56, 
+    lng: -46.64,
+    image: "https://via.placeholder.com/300",
+    description: "Descrição exemplo",
+    author: "Usuário" 
+  },
 ];
 
 export default function Maps() {
@@ -34,8 +52,7 @@ export default function Maps() {
     setSelected(null);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
 
     if (selected) {
       // UPDATE
@@ -58,6 +75,9 @@ export default function Maps() {
         name: form.name,
         lat: parseFloat(form.lat),
         lng: parseFloat(form.lng),
+        image: "https://via.placeholder.com/300",
+        description: "Sem descrição",
+        author: "Usuário"
       };
       setMarkers((prev) => [...prev, newMarker]);
     }
@@ -66,101 +86,68 @@ export default function Maps() {
     setSelected(null);
   };
 
-  const handleEdit = (marker) => {
-    setSelected(marker);
-    setForm(marker);
+  // const handleEdit = (marker) => {
+  //   setSelected(marker);
+  //   setForm(marker);
 
-    // optional: center map on marker when editing
-    setCenter({ lat: marker.lat, lng: marker.lng });
-  };
+  //   // optional: center map on marker when editing
+  //   setCenter({ lat: marker.lat, lng: marker.lng });
+  // };
 
-  const handleDelete = (id) => {
-    setMarkers((prev) => prev.filter((m) => m.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   setMarkers((prev) => prev.filter((m) => m.id !== id));
+  // };
 
   return (
-    <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-      <LoadScript googleMapsApiKey="">
-        <GoogleMap
-          mapContainerStyle={{ width: "100%", height: "500px" }}
-          center={center} // ✅ dynamic center
-          zoom={10}
-          onClick={handleMapClick}
-        >
-          {markers.map((marker) => (
-            <Marker
-              key={marker.id}
-              position={{ lat: marker.lat, lng: marker.lng }}
-              onClick={() => handleEdit(marker)}
-            />
-          ))}
-        </GoogleMap>
-      </LoadScript>
+  <div className="map-container">
 
-      <div className="bg-white p-4 rounded-2xl shadow">
-        <h2 className="text-xl font-bold mb-2">
-          {selected ? "Edit Marker" : "Add Marker"}
-        </h2>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-          <input
-            type="text"
-            placeholder="Name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="border p-2 rounded"
-            required
+    {/* MAPA */}
+    <LoadScript googleMapsApiKey="">
+      <GoogleMap
+        mapContainerStyle={{ width: "100%", height: "100%" }}
+        center={center}
+        zoom={10}
+        onClick={handleMapClick}
+      >
+        {markers.map((marker) => (
+          <Marker
+            key={marker.id}
+            position={{ lat: marker.lat, lng: marker.lng }}
+            onClick={() => setSelected(marker)}
           />
+        ))}
+      </GoogleMap>
+    </LoadScript>
 
-          <input
-            type="number"
-            placeholder="Latitude"
-            value={form.lat}
-            onChange={(e) => setForm({ ...form, lat: e.target.value })}
-            className="border p-2 rounded"
-            required
-          />
+    {/* SIDEBAR */}
+    <div className="sidebar">
+      <Link to="/catalogo" className="back-btn">
+        ← Catálogo
+      </Link>
 
-          <input
-            type="number"
-            placeholder="Longitude"
-            value={form.lng}
-            onChange={(e) => setForm({ ...form, lng: e.target.value })}
-            className="border p-2 rounded"
-            required
-          />
+      {selected ? (
+        <>
+          <img src={selected.image} alt="planta" />
 
-          <button className="bg-blue-500 text-white p-2 rounded">
-            {selected ? "Update" : "Create"}
-          </button>
-        </form>
-
-        <div className="mt-4">
-          <h3 className="font-semibold">Markers List</h3>
-          {markers.map((m) => (
-            <div
-              key={m.id}
-              className="flex justify-between items-center border-b py-2"
-            >
-              <span>{m.name}</span>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => handleEdit(m)}
-                  className="text-blue-500"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(m.id)}
-                  className="text-red-500"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+          <h2>{selected.name}</h2>
+          <p>{selected.description}</p>
+          <p>Por: {selected.author}</p>
+        </>
+      ) : (
+        <p>Selecione um marcador</p>
+      )}
     </div>
-  );
+
+    {/* SEARCH BOX */}
+    <div className="search-box">
+      <input type="text" placeholder="Buscar..." />
+    </div>
+
+    {/* BOTÃO + */}
+    <Link to="/cadastrar-planta" className="add-btn">
+  +
+    </Link>
+
+  </div>
+);
 }
