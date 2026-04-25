@@ -6,20 +6,17 @@ import '../assets/styles/forms.css'
 export default function CadastroPlanta() {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
-
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
-
   const [form, setForm] = useState({
     name: "",
     genero: "",
     especie: "",
     description: "",
     image: "",
-    lat: "",
-    lng: ""
   });
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -87,6 +84,7 @@ export default function CadastroPlanta() {
             onChange={handleChange}
           />
 
+          {/* Não, a localização não será feita na mão, pelamor 
           <input
             name="lat"
             type="number"
@@ -105,7 +103,7 @@ export default function CadastroPlanta() {
             value={form.lng}
             onChange={handleChange}
             required
-          />
+          /> */}
 
           <button type="submit" className="submit-btn">
             Salvar

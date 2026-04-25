@@ -17,7 +17,7 @@ function App() {
             <button><Link to='/maps'>Mapa</Link></button>
             <button><Link to='/catalogo'>Catálogo</Link></button>
             {!isLoggedIn && (
-              <button><Link to='/login'>Cadastrar Planta</Link></button>
+              <button><Link to='/login'>Login</Link></button>
               )}
             {isLoggedIn && (
                 <button><Link to='/cadastrar-planta'>Cadastrar Planta</Link></button>
