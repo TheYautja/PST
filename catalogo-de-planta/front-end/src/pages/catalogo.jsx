@@ -1,6 +1,7 @@
 import Header from "./widgets/Header";
 import Catalogado from "./widgets/Catalogado";
 import '../assets/styles/catalogo.css';
+import filtroImg from "../assets/images/filtro.png"
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -9,6 +10,7 @@ import { useState, useEffect } from "react";
 export default function Catalogo() {
    const [filtro, setFiltro] = useState('');
    const [plantas, setPlantas] = useState([]);
+   const [plantaSelecionada, setPlantaSelecionada] = useState(null);
 
    useEffect(() => {
       async function fetchPlantas() {
@@ -29,32 +31,78 @@ export default function Catalogo() {
 
    // * Para cada planta carregada, tem q chamar a função Catalogado
    function carregarPlantas() {
-      return(
+      return (
          <div className="catalogoPlantas">
             {
-               plantas.filter(element => element.nome_comum.toLowerCase().includes(filtro.toLowerCase()))
-               .map(element => Catalogado(element))
+            plantas
+               .filter(element =>
+                  element.nome_comum?.toLowerCase().includes(filtro.toLowerCase())
+               )
+               .map((element) => (
+                  <div
+                  key={element.id}
+                  onClick={() => setPlantaSelecionada(element)}
+                  >
+                  <Catalogado
+                     imagem_url={element.imagem_url}
+                     nome_comum={element.nome_comum}
+                     id_genero={element.id_genero}
+                     descricao={element.descricao}
+                  />
+                  </div>
+               ))
             }
          </div>
-      )
-   }
+      );
+      }
+
 
    return (
       <div>
          <Header />
          <main>
-            <h1>Catálogo de plantas - Cidade</h1>
+            <h1>Catálogo de plantas</h1>
 
-            <Link to={"/cadastrar-planta"} className="add.btn">+</Link>
+            <Link to={"/cadastrar-planta"} className="addBtn">+</Link>
 
             <div id="pesquisa">
-               <p>🔍</p>
+               <img src={filtroImg} alt="filtro" className="filtroImg"/>
                <input type="text" id="pesquisa" value={filtro} onChange={manusearMudancaFiltro} />
             </div>
 
             <section>
                {carregarPlantas()}
             </section>
+
+            {plantaSelecionada && (
+               <div
+                  className="modal-overlay"
+                  onClick={() => setPlantaSelecionada(null)}
+               >
+                  <div
+                     className="modal-content"
+                     onClick={(e) => e.stopPropagation()}
+                  >
+                     {/* IMAGEM */}
+                     <div className="modal-left">
+                     <img src={plantaSelecionada.imagem_url} />
+                     </div>
+
+                     {/* TEXTO */}
+                     <div className="modal-right">
+                     <h1>{plantaSelecionada.nome_comum}</h1>
+                     <h3>{plantaSelecionada.id_genero}</h3>
+
+                     <p>{plantaSelecionada.descricao}</p>
+
+                     <span>Por: usuário</span>
+
+                     <button><Link to="/maps">Conferir no mapa</Link></button>
+                     </div>
+                  </div>
+               </div>
+               )}
+
 
             <div className="proximaPagina">
                <p> {"< 00 | 00 >"}  </p>

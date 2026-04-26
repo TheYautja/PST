@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "../assets/styles/login.css";
 
 export default function Login() {
   const { login } = useAuth(); 
@@ -41,8 +42,11 @@ export default function Login() {
   }
 
   return (
-    <div>
+<div className="box">
+  <div className="login-container">
+    <div className="login-box">
       <h1>Login</h1>
+
       <form onSubmit={handleLogin}>
         <input
           type="email"
@@ -62,15 +66,13 @@ export default function Login() {
 
         <button type="submit">Entrar</button>
       </form>
-      
-      <div style={{ marginTop: "20px" }}>
-          <p>Não tem uma conta?</p>
-          <Link to='/register'>Cadastre-se</Link>
-      </div>
 
-      <div style={{ marginTop: "30px", borderTop: "1px solid #ccc", paddingTop: "10px" }}>
-          <small>qualquer email/senha funciona aq pra testar as coisas</small>
+      <div className="login-footer">
+        <p>Não tem uma conta?</p>
+        <Link to="/register">Cadastre-se</Link>
       </div>
     </div>
-  );
+  </div>
+  </div>
+);
 }

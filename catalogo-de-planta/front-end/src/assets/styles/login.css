@@ -1,0 +1,89 @@
+.box {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #4b6f2a;
+}
+
+.login-container {
+  min-height: 40vh;
+  background: #eaeaea;
+  border-radius: 5vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.login-box {
+  width: 100%;
+  max-width: 450px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-box h1 {
+  text-align: left;
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* inputs */
+.login-box input {
+  width: 90%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #ffffff;
+  outline: none;
+
+  font-size: 14px;
+  margin-bottom: 1vh;
+}
+
+/* botão */
+.login-box button {
+  margin-top: 10px;
+
+  background: #4b6f2a;
+  color: white;
+
+  border: none;
+  padding: 12px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+  align-self: center;
+  width: 150px;
+}
+
+.login-box button:hover {
+  background: #3f5e24;
+}
+
+/* link cadastro */
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-footer a {
+  color: #4b6f2a;
+  text-decoration: none;
+  font-weight: 500;
+}

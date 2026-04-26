@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
         <Header/>
-        <main>
+        <main className="principalPag">
           <h1> Seja bem vindo ao Plantarium! </h1>
           <p>Deixe registradas aqui as plantas que conhece e conheça as que tem ao seu redor</p>
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./widgets/Header";
+import "../assets/styles/cadastro.css";
 
 export default function Register() {
     const [form, setForm] = useState({
@@ -32,44 +33,52 @@ export default function Register() {
         }}
 
         return (
+            <div className="box">
+              <div className="register-container">
+                <div className="register-box">
+                <h1>Cadastro</h1>
 
-            <form onSubmit={handleSubmit}>
-                <input
+                <form onSubmit={handleSubmit}>
+
+                    <input
                     type="text"
                     placeholder="Nome"
                     value={form.nome}
                     onChange={(e) => setForm({ ...form, nome: e.target.value })}
-                />
+                    />
 
-                <input
+                    <input
                     type="email"
                     placeholder="Email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                />
+                    />
 
-                <input
+                    <input
                     type="text"
                     placeholder="Profissão"
                     value={form.profissao}
                     onChange={(e) => setForm({ ...form, profissao: e.target.value })}
-                />
+                    />
 
-                <input
+                    <input
                     type="text"
                     placeholder="Cidade"
                     value={form.cidade}
                     onChange={(e) => setForm({ ...form, cidade: e.target.value })}
-                />
+                    />
 
-                <input
+                    <input
                     type="password"
                     placeholder="Senha"
                     value={form.senha}
                     onChange={(e) => setForm({ ...form, senha: e.target.value })}
-                />
+                    />
 
-                <button type="submit">Cadastrar</button>
-            </form>
+                    <button type="submit">Cadastrar</button>
+                </form>
+                </div>
+            </div>
+        </div>
         )
     }

@@ -43,8 +43,9 @@ export default function CadastroPlanta() {
   }
 
   return (
-    <div className="form-container">
-      <div className="form-box">
+    <div className="box">
+    <div className="plant-container">
+      <div className="plant-box">
         <h1>Cadastrar Planta</h1>
 
         <form onSubmit={handleSubmit}>
@@ -84,32 +85,12 @@ export default function CadastroPlanta() {
             onChange={handleChange}
           />
 
-          {/* Não, a localização não será feita na mão, pelamor 
-          <input
-            name="lat"
-            type="number"
-            step="any"
-            placeholder="Latitude"
-            value={form.lat}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            name="lng"
-            type="number"
-            step="any"
-            placeholder="Longitude"
-            value={form.lng}
-            onChange={handleChange}
-            required
-          /> */}
-
           <button type="submit" className="submit-btn">
             Salvar
           </button>
         </form>
       </div>
+     </div>
     </div>
   );
 }
