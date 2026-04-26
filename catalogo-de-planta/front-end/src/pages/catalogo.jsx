@@ -61,7 +61,7 @@ export default function Catalogo() {
       <div>
          <Header />
          <main>
-            <h1>Catálogo de plantas</h1>
+            <h1 className="tituloPag">Catálogo de plantas</h1>
 
             <Link to={"/cadastrar-planta"} className="addBtn">+</Link>
 

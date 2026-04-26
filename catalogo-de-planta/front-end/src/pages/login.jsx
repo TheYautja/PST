@@ -42,7 +42,11 @@ export default function Login() {
   }
 
   return (
-<div className="box">
+ <div className="box">
+
+    <button onClick={() => navigate(-1)} className="btnVoltar">
+        ← 
+    </button>
   <div className="login-container">
     <div className="login-box">
       <h1>Login</h1>

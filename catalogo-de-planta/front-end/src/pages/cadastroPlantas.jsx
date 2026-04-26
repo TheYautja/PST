@@ -44,6 +44,9 @@ export default function CadastroPlanta() {
 
   return (
     <div className="box">
+    <button onClick={() => navigate(-1)} className="btnVoltar">
+      ← 
+    </button>
     <div className="plant-container">
       <div className="plant-box">
         <h1>Cadastrar Planta</h1>

@@ -51,6 +51,7 @@
   font-size: 14px;
   margin: 0 0 1.5vh -1vw;
   
+  color: black;
 }
 
 /* botão */
@@ -72,5 +73,27 @@
 }
 
 .register-box button:hover {
+  background: #3f5e24;
+}
+
+.btnVoltar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: xx-large;
+
+  background: #4b6f2a;
+  color: white;
+
+  border: none;
+  padding: 10px 10px;
+
+  border-radius: 20px;
+  cursor: pointer;
+
+  z-index: 1000; /* garante que fique por cima */
+}
+
+.btnVoltar:hover {
   background: #3f5e24;
 }

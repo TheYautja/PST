@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./widgets/Header";
 import "../assets/styles/cadastro.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Register() {
     const [form, setForm] = useState({
@@ -11,28 +12,50 @@ export default function Register() {
         senha: "",
     });
 
+    const navigate = useNavigate();
+
     async function handleSubmit(e) {
         e.preventDefault();
 
         try {
             const res = await fetch("http://localhost:5432/users", {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                "Content-Type": "application/json",
                 },
-                body: JSON.stringify(form)
+                body: JSON.stringify(form),
             });
-        
-            if (!res.ok) throw new Error("Erro ao cadastrar"),
+
+            if (!res.ok) throw new Error("Erro ao cadastrar");
+
+            const data = await res.json();
+
+            // salva usuário como logado
+            localStorage.setItem("user", JSON.stringify(data));
 
             alert("Usuário criado!");
 
-            setForm({nome: "", email: "", profissao: "", cidade:"", senha: ""});
+            setForm({
+                nome: "",
+                email: "",
+                profissao: "",
+                cidade: "",
+                senha: "",
+            });
+
+            // redireciona pra home (ou mapa, ou catálogo)
+            navigate("/catalogo");
+
         } catch (err) {
             console.error(err);
         }}
 
         return (
+            <>
+            <button onClick={() => navigate(-1)} className="btnVoltar">
+                ← 
+            </button>
+
             <div className="box">
               <div className="register-container">
                 <div className="register-box">
@@ -80,5 +103,6 @@ export default function Register() {
                 </div>
             </div>
         </div>
+        </>
         )
     }
