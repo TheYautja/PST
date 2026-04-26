@@ -37,24 +37,54 @@ export const createPlantEntry = async (req, res) => {
   try {
     const {
       nome_comum,
-      id_genero,
+      nome_genero,
       id_usuario,
       descricao,
       imagem_url
     } = req.body;
 
-    const result = await db.query(`
-      INSERT INTO plantas
-      (nome_comum, id_genero, id_usuario, descricao, imagem_url)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *
-    `, [nome_comum, id_genero, id_usuario, descricao, imagem_url]);
+    if (!nome_comum || !nome_genero) {
+      return res.status(400).json({
+        error: "nome_comum e nome_genero são obrigatórios"
+      });
+    }
+
+    const generoNormalizado = nome_genero.trim().toLowerCase();
+
+    let generoResult = await db.query(
+      `SELECT id FROM genero WHERE LOWER(nome) = $1 LIMIT 1`,
+      [generoNormalizado]
+    );
+
+    let id_genero;
+
+    if (generoResult.rows.length > 0) {
+      id_genero = generoResult.rows[0].id;
+    } else {
+
+      const novoGenero = await db.query(
+        `INSERT INTO genero (nome) VALUES ($1) RETURNING id`,
+        [nome_genero.trim()]
+      );
+
+      id_genero = novoGenero.rows[0].id;
+    }
+
+    const result = await db.query(
+      `INSERT INTO plantas
+       (nome_comum, id_genero, id_usuario, descricao, imagem_url)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *`,
+      [nome_comum, id_genero, id_usuario, descricao, imagem_url]
+    );
 
     res.status(201).json(result.rows[0]);
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 export const updatePlant = async (req, res) => {
   try {
@@ -118,13 +148,13 @@ export const getFirst36 = async (req, res) => {
 export const getFirstN = async (req, res) => {
   try {
 
-    const { count } = req.body
+    const { count } = req.params;
 
     if (!count || isNaN(count) || count <= 0) {
       return res.status(400).json({ error: "faz favor né bicho" });
     }
 
-    await db.query(
+    const result = await db.query(
       `SELECT * FROM plantas LIMIT $1`,
       [count]
     );
@@ -135,3 +165,5 @@ export const getFirstN = async (req, res) => {
     res.status(500).json({error: err.message});
   }
 }
+
+
