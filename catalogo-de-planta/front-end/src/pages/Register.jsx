@@ -18,7 +18,12 @@ export default function Register() {
         e.preventDefault();
 
         try {
-            const res = await fetch("http://localhost:5432/users", {
+            const res = await fetch("http://localhost:3000/users", {
+
+                /*
+                antes a resposta buscava do port direto do banco, tem q ser o do back
+                */
+
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
