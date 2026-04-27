@@ -12,17 +12,24 @@ export default function Login() {
     senha: ""
   });
 
-  async function handleLogin(e) {
+  async function handleLogin(e) { // tá filtrando a senha no front, ver dps
     e.preventDefault();
 
-    login({ name: "Usuário Teste", email: form.email }); 
-    alert("Login realizado");
-    navigate("/"); 
-    /* 
-    O que tinha antes, comentado pra não travar o front sem o backend ligado
+
+    //tava aq o problema, nem chegava no codigo do back, logava antes
+    //login({ name: "Usuário Teste", email: form.email });
+    //alert("Login realizado");
+    //navigate("/");
+
+    //O que tinha antes, comentado pra não travar o front sem o backend ligado
     
     try {
       const res = await fetch("http://localhost:3000/users" );
+
+      if (!res.ok) {
+        throw new Error("erro na resposta do back :O)");
+      }
+
       const users = await res.json();
 
       const user = users.find(
@@ -38,7 +45,7 @@ export default function Login() {
     } catch (error) {
       console.error("Erro ao conectar com backend:", error);
     }
-    */
+
   }
 
   return (
