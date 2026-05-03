@@ -30,13 +30,13 @@ export const getUserByID = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    const { nome, email, cep } = req.body;
+    const { nome, email, cep, senha } = req.body;
 
     const result = await db.query(
-      `INSERT INTO usuarios (nome, email, cep)
-       VALUES ($1, $2, $3)
+      `INSERT INTO usuarios (nome, email, cep, senha)
+       VALUES ($1, $2, $3, $4)
        RETURNING *`,
-      [nome, email, cep]
+      [nome, email, cep, senha]
     );
 
     res.status(201).json(result.rows[0]);
@@ -48,14 +48,14 @@ export const createUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nome, email, cep } = req.body;
+    const { nome, email, cep, senha } = req.body;
 
     const result = await db.query(
       `UPDATE usuarios
-       SET nome = $1, email = $2, cep = $3
-       WHERE id = $4
+       SET nome = $1, email = $2, cep = $3, senha = $4
+       WHERE id = $5
        RETURNING *`,
-      [nome, email, cep, id]
+      [nome, email, cep, senha, id]
     );
 
     res.json(result.rows[0]);
@@ -73,5 +73,28 @@ export const deleteUser = async (req, res) => {
     res.json({ message: "Usuário deletado" });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+};
+
+export const validateUser = async (req, res) => {
+  try {
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+      return res.status(400).json({ valid: false, error: "Email e senha são obrigatórios" });
+    }
+
+    const result = await db.query(
+      `SELECT * FROM usuarios WHERE email = $1 AND senha = $2`,
+      [email, senha]
+    );
+
+    if (result.rows.length > 0) {
+      res.json({ valid: true, user: result.rows[0] });
+    } else {
+      res.status(401).json({ valid: false, error: "Email ou senha incorretos" });
+    }
+  } catch (err) {
+    res.status(500).json({ valid: false, error: err.message });
   }
 };

@@ -42,7 +42,7 @@ export default function CadastroPlanta() {
       id_usuario: user?.id || 1
     };
 
-    axios.post("http://localhost:8000/plants", plantData)
+    axios.post("http://localhost:3000/plants", plantData)
       .then(response => {
         console.log("Planta cadastrada com sucesso:", response.data);
         navigate("/maps");

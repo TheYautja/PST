@@ -2,7 +2,8 @@ import Header from "./widgets/Header";
 import Catalogado from "./widgets/Catalogado";
 import '../assets/styles/catalogo.css';
 import filtroImg from "../assets/images/filtro.png"
-import { Link } from "react-router-dom";
+import logo from "../assets/images/logo (3).png"
+import { Link, useSearchParams } from "react-router-dom";
 import axios from 'axios';
 
 import { useState, useEffect } from "react";
@@ -11,19 +12,29 @@ export default function Catalogo() {
    const [filtro, setFiltro] = useState('');
    const [plantas, setPlantas] = useState([]);
    const [plantaSelecionada, setPlantaSelecionada] = useState(null);
+   const [searchParams] = useSearchParams();
 
    useEffect(() => {
       async function fetchPlantas() {
          try {
-            const response = await axios.get('http://localhost:8000/plants');
+            const response = await axios.get('http://localhost:3000/plants');
             const semValoresNulos = response.data.filter(element => element.nome_comum != null);
             setPlantas(semValoresNulos);
+
+            // Verificar se tem parâmetro id na URL
+            const plantaId = searchParams.get('id');
+            if (plantaId) {
+               const planta = semValoresNulos.find(p => p.id === parseInt(plantaId));
+               if (planta) {
+                  setPlantaSelecionada(planta);
+               }
+            }
          } catch (error) {
             console.error('Erro:', error);
          }
       }
       fetchPlantas();
-   }, []);
+   }, [searchParams]);
 
    function manusearMudancaFiltro(e) {
       setFiltro(e.target.value)
@@ -85,7 +96,7 @@ export default function Catalogo() {
                   >
                      {/* IMAGEM */}
                      <div className="modal-left">
-                     <img src={plantaSelecionada.imagem_url} />
+                     <img src={plantaSelecionada.imagem_url || logo} />
                      </div>
 
                      {/* TEXTO */}

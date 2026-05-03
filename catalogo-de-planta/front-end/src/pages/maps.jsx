@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { createPortal } from "react-dom";
+import logo from "../assets/images/logo (3).png";
 import "../assets/styles/maps.css";
 
 export default function Maps() {
@@ -15,16 +16,32 @@ export default function Maps() {
   const [clickedPosition, setClickedPosition] = useState(null);
 
   const { isLoggedIn } = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 	const { isLoaded } = useJsApiLoader({
-		googleMapsApiKey: "KEY",
+		googleMapsApiKey: import.meta.env.API_KEY_MAPS,
 	});
 
   const [center, setCenter] = useState({
     lat: -23.55,
     lng: -46.63,
   });
+
+  // Pega a localização atual e coloca como centro, só pra não aparecer em são paulo...
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setCenter({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          });
+        }
+      );
+    }
+  }, []);
+
+
 
   //LOAD DATA
   useEffect(() => {
@@ -58,12 +75,11 @@ export default function Maps() {
     loadData();
   }, []);
 
-  // CLICK MAP → OPEN MODAL
+  // CLICK MAP → OPEN MODAL (ONLY FOR LOGGED IN USERS)
   const handleMapClick = (e) => {
     if (!e.latLng) return;
 
     if (!isLoggedIn) {
-      navigate("/login");
       return;
     }
 
@@ -146,25 +162,25 @@ export default function Maps() {
         {selected ? (
           <>
             {selected.plant && (
-              <>
+              <div className="plant-details">
                 <img
-                  src={selected.plant.imagem_url}
-                  alt="planta"
+                  src={selected.plant.imagem_url || logo}
+                  alt={selected.plant.nome_comum}
                 />
                 <h2>{selected.plant.nome_comum}</h2>
                 <p>{selected.plant.descricao}</p>
-              </>
+
+                <Link to={`/catalogo?id=${selected.plant.id}`}>
+                  Ver mais
+                </Link>
+
+                {isLoggedIn && (
+                  <button onClick={() => handleDelete(selected.id)}>
+                    Excluir marcador
+                  </button>
+                )}
+              </div>
             )}
-
-            <Link to={`/catalogo`}>
-              Ver mais
-            </Link>
-
-            <div className="actions">
-              <button onClick={() => handleDelete(selected.id)}>
-                Excluir
-              </button>
-            </div>
           </>
         ) : (
           <p>Selecione um marcador</p>
@@ -172,9 +188,9 @@ export default function Maps() {
       </div>
 
       {/* SEARCH */}
-      <div className="search-box">
+      {/* <div className="search-box">
         <input type="text" placeholder="Buscar..." />
-      </div>
+      </div> */}
 
       {/* ADD BUTTON (UNCHANGED as requested) */}
       <Link to="/cadastrar-planta" className="add-btn">
@@ -189,14 +205,17 @@ export default function Maps() {
 							<h2>Selecione uma planta</h2>
 
 							<div className="plant-list">
-								{plants.map((p) => (
-									<div
-										key={p.id}
-										className="plant-item"
-										onClick={() => handleSelectPlant(p)}
-									>
-										<img src={p.imagem_url} alt={p.nome_comum} />
-										<p>{p.nome_comum}</p>
+							{plants.map((p) => (
+                <div
+								key={p.id}
+								className="plant-item"
+								onClick={() => handleSelectPlant(p)}
+							>
+								<img src={p.imagem_url || logo} alt={p.nome_comum} />
+								<div className="plant-info">
+									<p className="plant-name">{p.nome_comum}</p>
+									<p className="plant-genero">{p.genero || 'Sem gênero'}</p>
+								</div>
 									</div>
 								))}
 							</div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import "../assets/styles/login.css";
 
@@ -12,37 +13,22 @@ export default function Login() {
     senha: ""
   });
 
-  async function handleLogin(e) { // tá filtrando a senha no front, ver dps
+  async function handleLogin(e) {
     e.preventDefault();
 
-
-    //tava aq o problema, nem chegava no codigo do back, logava antes
-    //login({ name: "Usuário Teste", email: form.email });
-    //alert("Login realizado");
-    //navigate("/");
-
-    //O que tinha antes, comentado pra não travar o front sem o backend ligado
-    
     try {
-      const res = await fetch("http://localhost:3000/users" );
+      const { data } = await axios.post("http://localhost:3000/users/validate", {
+        email: form.email,
+        senha: form.senha
+      });
 
-      if (!res.ok) {
-        throw new Error("erro na resposta do back :O)");
-      }
-
-      const users = await res.json();
-
-      const user = users.find(
-        (u) => u.email === form.email && u.senha === form.senha
-      );
-
-      if (user) {
-        login(user); // Se achar o usuário real, loga com os dados dele
+      if (data.valid && data.user) {
+        login(data.user);
         navigate("/");
-      } else {
-        alert("Usuário não encontrado");
       }
     } catch (error) {
+      const errorMsg = error.response?.data?.error || "Erro ao fazer login";
+      alert(errorMsg);
       console.error("Erro ao conectar com backend:", error);
     }
 

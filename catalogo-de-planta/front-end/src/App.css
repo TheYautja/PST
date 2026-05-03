@@ -238,8 +238,54 @@
 
 header {
   margin-bottom: 3vh;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
 }
 
 .userIcon {
   height: 7vh;
+  cursor: pointer;
+}
+
+.userSection {
+  margin-left: auto;
+  position: relative;
+}
+
+.userDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
+  z-index: 100;
+  margin-top: 0.5rem;
+}
+
+.userDropdown p {
+  padding: 0.75rem 1rem;
+  margin: 0;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  color: black;
+}
+
+.userDropdown button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #e74c3c;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.userDropdown button:hover {
+  background-color: #f5f5f5;
 }
