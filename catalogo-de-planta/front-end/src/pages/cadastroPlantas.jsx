@@ -42,7 +42,7 @@ export default function CadastroPlanta() {
       id_usuario: user?.id || 1
     };
 
-    axios.post("http://localhost:8000/plants", plantData )
+    axios.post("http://localhost:3000/plants", plantData)
       .then(response => {
         console.log("Planta cadastrada com sucesso:", response.data);
         navigate("/maps");
@@ -148,11 +148,11 @@ export default function CadastroPlanta() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="description">Local</label>
+                <label htmlFor="description">Descrição</label>
                 <textarea
                   id="description"
                   name="description"
-                  placeholder="Descreva o local onde a planta foi encontrada..."
+                  placeholder="Descrição da planta..."
                   value={form.description}
                   onChange={handleChange}
                   disabled={loading}
