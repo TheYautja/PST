@@ -42,7 +42,7 @@ export default function CadastroPlanta() {
       id_usuario: user?.id || 1
     };
 
-    axios.post("http://localhost:3000/plants", plantData)
+    axios.post("http://localhost:8000/plants", plantData )
       .then(response => {
         console.log("Planta cadastrada com sucesso:", response.data);
         navigate("/maps");
@@ -54,65 +54,123 @@ export default function CadastroPlanta() {
       });
   }
 
+  const isValidImageUrl = (url) => {
+    if (!url) return false;
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   return (
     <div className="box">
-    <button onClick={() => navigate(-1)} className="btnVoltar">
-      ← 
-    </button>
-    <div className="plant-container">
-      <div className="plant-box">
-        <h1>Cadastrar Planta</h1>
+      <button onClick={() => navigate(-1)} className="btnVoltar">
+        ←
+      </button>
 
-        {error && <div className="error-message">{error}</div>}
+      <div className="plant-container">
+        <div className="plant-box">
+          <h1>Cadastrar Planta</h1>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            name="name"
-            placeholder="Nome comum"
-            value={form.name}
-            onChange={handleChange}
-            required
+          {error && <div className="error-message">{error}</div>}
+
+          <form onSubmit={handleSubmit} className="plant-form-wrapper">
+            <div className="plant-image-section">
+              <label htmlFor="image">URL da imagem:</label>
+              
+              <input
+                id="image"
+                name="image"
+                type="url"
+                placeholder="https://exemplo.com/imagem.jpg"
+                value={form.image}
+                onChange={handleChange}
+                disabled={loading}
+              />
+
+              <div className="image-preview">
+                {isValidImageUrl(form.image ) ? (
+                  <img 
+                    src={form.image} 
+                    alt="Preview da planta"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = 'Imagem não encontrada';
+                    }}
+                  />
+                ) : (
+                  <span>Nenhuma imagem selecionada</span>
+                )}
+              </div>
+            </div>
+
+            <div className="plant-fields-section">
+              <div className="form-group">
+                <label htmlFor="name">Nome comum</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Ex: Rosa"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="genero">Gênero</label>
+                <input
+                  id="genero"
+                  name="genero"
+                  type="text"
+                  placeholder="Ex: Rosa"
+                  value={form.genero}
+                  onChange={handleChange}
+                  disabled={loading}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="especie">Espécie</label>
+                <input
+                  id="especie"
+                  name="especie"
+                  type="text"
+                  placeholder="Ex: Rosa damascena"
+                  value={form.especie}
+                  onChange={handleChange}
+                  disabled={loading}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="description">Local</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Descreva o local onde a planta foi encontrada..."
+                  value={form.description}
+                  onChange={handleChange}
+                  disabled={loading}
+                />
+              </div>
+            </div>
+          </form>
+
+          <button 
+            type="submit" 
+            className="submit-btn" 
             disabled={loading}
-          />
-
-          <input
-            name="genero"
-            placeholder="Gênero"
-            value={form.genero}
-            onChange={handleChange}
-            disabled={loading}
-          />
-
-          <input
-            name="especie"
-            placeholder="Espécie"
-            value={form.especie}
-            onChange={handleChange}
-            disabled={loading}
-          />
-
-          <textarea
-            name="description"
-            placeholder="Descrição"
-            value={form.description}
-            onChange={handleChange}
-            disabled={loading}
-          />
-
-          <input
-            name="image"
-            placeholder="URL da imagem"
-            value={form.image}
-            onChange={handleChange}
-            disabled={loading}
-          />
-
-          <button type="submit" className="submit-btn" disabled={loading}>
+            onClick={handleSubmit}
+          >
             {loading ? "Salvando..." : "Salvar"}
           </button>
-        </form>
+        </div>
       </div>
-     </div>
     </div>
   );
 }
